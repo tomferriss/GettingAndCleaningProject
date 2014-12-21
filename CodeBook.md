@@ -1,6 +1,11 @@
-#first
+#Variables
 
-##Second
+  The variables are of three kinds: The first is subject is a numeric code indicating the human individual who is the subject of data collection for this data point. The second is the activity (one of six different physical activities) that the subject was engaged in at the time of data collection. The third type is for the various types of measurements that the wearable device makes, related to motion of the subject and so on. Initially there were over 60 such measurements.
 
-###third
+#Data
 
+The data were collected from accelerometers in the Samsung Galaxy S smartphone. The data are hosted on the University of California Irvine Machine Learning Repository. Experiments were carried out on thirty volunteers between the ages of 19 and 48, where each person performed the six activities (walking, climbing upstairs, climbing downstairs, sitting, standing and laying down) while wearing the phone on the waist. The accelerometer and gyroscope in the phones then took various measurements. Aftweards, the data was randomly partitioned into test and training data, although I reversed this transformation later. 
+
+#Transformations and Work Performed
+
+This data set was manipulated and a new data set was created using a script written in the R programming language. The script first loads in the test and training data for subjects, activities, and the measurements. It then stacks the test set on top of the training set, thus recreating each in its entirety. This almost completes part 1 of the assignment, except there is some more processing of the data names and data encoding that is done first. The script nexts loads in the data names for the measurements and assigns them as the names of the measurements data frame. It also reads in the activity labels. Next, I weed out all of the measurements that do not measure a mean or a standard deviation. I use the grep function to form a logical string that indicates whether each column name contains the strings "mean" and "std" -- some further manual processing is required to winnow out a few remaining extraneous data variables. This completes part 2 and 4 of the assignment. Now that the measurement data only includes mean and standard deviation calculations, I bind the measurement data with the subject data and activity data. This completes part 1 of the assignment. Next, the numeric codes that code the activities are replaced with their labels to complete part 4 of the assingment. Finally, the mean of each measurement variable is calculated for each subject and each activity, and a new data set is written to the working directory containing this new data set. This completes the assingment.
